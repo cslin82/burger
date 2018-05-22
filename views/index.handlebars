@@ -1,22 +1,23 @@
-<h1>Burgers!</h1>
+<div class="container">
+  <div class="jumbotron">
+    <h2>Burger time</h2>
+  </div>
 
-<h2>Burgers that are not devoured!</h2>
+  <div id="burgers-left">
+    <h2>Burgers on menu</h2>
+    <ul>
+      {{#each burger}} {{#unless devoured}} {{> burgers/burger-block devoured=1}} {{/unless}} {{/each}}
+    </ul>
+  </div>
 
-<ul>
-  {{#each burger}}
-    {{#unless devoured}}
-      {{> burgers/burger-block devoured=1}}
-    {{/unless}}
-  {{/each}}
-</ul>
+  <div id="burgers-right">
+    <h2>Burgers Devoured</h2>
+    <ul>
+      {{#each burger}} {{#if devoured}} {{> burgers/burger-block devoured=0}} {{/if}} {{/each}}
+    </ul>
+  </div>
 
-<h2>Burgers that are devoured!</h2>
-
-<ul>
-  {{#each burger}}
-    {{#if devoured}}
-      {{> burgers/burger-block devoured=0}}
-    {{/if}}
-  {{/each}}
-</ul>
-
+  <textarea name="burger-desc" id="burger-desc" cols="40" rows="5" placeholder="Enter a burger"></textarea>
+  <button class="btn btn-default" id="burger-submit">Submit this burger</button>
+</div>
+<!-- end div.container -->
